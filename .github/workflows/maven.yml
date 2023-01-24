@@ -7,7 +7,7 @@
 # documentation.
 
 
-name: service transaction
+name: service drools
 
 on:
   push:
