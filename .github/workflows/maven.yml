@@ -35,7 +35,7 @@ jobs:
       with:
         image: syamsularie/drools-service
         tags: latest
-        registry: docker.io
+        registry: docker-drools.io
         dockerfile: Dockerfile
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
