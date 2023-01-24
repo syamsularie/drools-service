@@ -1,5 +1,4 @@
 name: drools service
-
 on:
   push:
     branches: [ "main" ]
