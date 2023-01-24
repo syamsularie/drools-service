@@ -6,7 +6,7 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: service drools
+name: drools service
 
 on:
   push:
@@ -35,7 +35,6 @@ jobs:
         with:
           image: syamsularie/drools-service
           tags: latest
-          registry: docker-drools.io
           dockerfile: Dockerfile
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
