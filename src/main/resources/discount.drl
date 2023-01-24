@@ -1,0 +1,113 @@
+import com.kezbek.drools.domain.OrderRequest;
+
+rule "Discount for total product 1 total price between 0 & 100000"
+    when
+        orderObject : OrderRequest( totalProduct==1 && totalPrice >= 0 && totalPrice < 100000 );
+    then
+        orderObject.setDiscountTransaction(1.2);
+end;
+
+rule "Discount for total product 1 total price between 100000 & 500000 "
+    when
+        orderObject : OrderRequest( totalProduct==1 && totalPrice >= 100000 && totalPrice < 500000 );
+    then
+        orderObject.setDiscountTransaction(1.75);
+end;
+
+rule "Discount for total product 1 total price above 500000"
+    when
+        orderObject : OrderRequest( totalProduct==1 && totalPrice >= 500000);
+    then
+        orderObject.setDiscountTransaction(2.3);
+end;
+
+rule "Discount for total product 2 total price between 500000 & 1000000"
+    when
+        orderObject : OrderRequest( totalProduct==2 && totalPrice >= 0 && totalPrice >= 500000 && totalPrice < 1000000 );
+    then
+        orderObject.setDiscountTransaction(2.45);
+end;
+
+rule "Discount for total product 2 total price between 1000000 & 1500000 "
+    when
+        orderObject : OrderRequest( totalProduct==2 && totalPrice >= 1000000 && totalPrice < 1500000 );
+    then
+        orderObject.setDiscountTransaction(2.75);
+end;
+
+rule "Discount for total product 2 total price above 500000"
+    when
+        orderObject : OrderRequest( totalProduct==2 && totalPrice >= 1500000);
+    then
+        orderObject.setDiscountTransaction(2.95);
+end;
+
+rule "Discount for total product 3 or more total price above 1500000"
+    when
+        orderObject : OrderRequest( totalProduct>=3 && totalPrice >= 1500000);
+    then
+        orderObject.setDiscountTransaction(3.35);
+end;
+
+rule "Discount for tier type BRONZE transaction 3"
+    when
+        orderObject : OrderRequest( tierType=="BRONZE" && transactionCount==3);
+    then
+        orderObject.setDiscountLoyalty(15000.0);
+end;
+
+rule "Discount for tier type BRONZE transaction 5"
+    when
+        orderObject : OrderRequest( tierType=="BRONZE" && transactionCount==5);
+    then
+        orderObject.setDiscountLoyalty(25000.0);
+end;
+
+rule "Discount for tier type BRONZE transaction 7"
+    when
+        orderObject : OrderRequest( tierType=="BRONZE" && transactionCount==7);
+    then
+        orderObject.setDiscountLoyalty(35000.0);
+end;
+
+rule "Discount for tier type SILVER transaction 3"
+    when
+        orderObject : OrderRequest( tierType=="SILVER" && transactionCount==3);
+    then
+        orderObject.setDiscountLoyalty(17500.0);
+end;
+
+rule "Discount for tier type SILVER transaction 5"
+    when
+        orderObject : OrderRequest( tierType=="SILVER" && transactionCount==5);
+    then
+        orderObject.setDiscountLoyalty(28500.0);
+end;
+
+rule "Discount for tier type SILVER transaction 7"
+    when
+        orderObject : OrderRequest( tierType=="SILVER" && transactionCount==7);
+    then
+        orderObject.setDiscountLoyalty(37500.0);
+end;
+
+rule "Discount for tier type GOLD transaction 3"
+    when
+        orderObject : OrderRequest( tierType=="GOLD" && transactionCount==3);
+    then
+        orderObject.setDiscountLoyalty(18000.0);
+end;
+
+rule "Discount for tier type GOLD transaction 5"
+    when
+        orderObject : OrderRequest( tierType=="GOLD" && transactionCount==5);
+    then
+        orderObject.setDiscountLoyalty(29000.0);
+end;
+
+rule "Discount for tier type GOLD transaction 7"
+    when
+        orderObject : OrderRequest( tierType=="GOLD" && transactionCount==7);
+    then
+        orderObject.setDiscountLoyalty(39000.0);
+end;
