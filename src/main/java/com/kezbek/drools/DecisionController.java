@@ -9,11 +9,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class DecisionController {
+
     private final KieContainer kieContainer;
     public DecisionController(KieContainer kieContainer) {
         this.kieContainer = kieContainer;
     }
     @PostMapping("/cashback")
+
     private OrderRequest getDiscountPercent(@RequestBody OrderRequest orderRequest) {
         KieSession kieSession = kieContainer.newKieSession();
         kieSession.insert(orderRequest);
